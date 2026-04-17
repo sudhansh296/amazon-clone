@@ -1,0 +1,16 @@
+# Ignore test folders
+tests-jasmine/
+tests-simple/
+tests/
+
+# Ignore setup/helper files
+SETUP_GITHUB.md
+GITHUB_DESCRIPTION.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
