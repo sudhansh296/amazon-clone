@@ -162,53 +162,42 @@ const object2={
 export let products = []; 
 
 export function loadProductsFetch(){
-   const promise = fetch('https:/supersimplebackend.dev/products').then((response)=>{
+   const promise = fetch('backend/products.json').then((response)=>{
       return response.json();
     }).then((productsData)=>{
-      products =productsData.map((productDetails)=>{//fetch already provides us an array so we need not change it to the js object /array
-    if(productDetails.type==='clothing'){
-      return new Clothing(productDetails)
-    }
-
-  return  new Product(productDetails);
-   });
-   
-  console.log('load products');
-    
- }).catch(()=>{
-    console.log('unexpected error. please try again later')
- });
- return promise;  
-
+      products = productsData.map((productDetails)=>{
+        if(productDetails.type==='clothing'){
+          return new Clothing(productDetails)
+        }
+        return new Product(productDetails);
+      });
+      console.log('load products');
+    }).catch(()=>{
+      console.log('unexpected error. please try again later')
+    });
+   return promise;  
 }
-
- 
-// loadProductsfetch().then(()=>{
-//   console.log('next step')
-// });
 
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('load',()=>{
-      products =JSON.parse(xhr.response).map((productDetails)=>{
-    if(productDetails.type==='clothing'){
-      return new Clothing(productDetails)
-    }
-
-  return  new Product(productDetails);
+      products = JSON.parse(xhr.response).map((productDetails)=>{
+        if(productDetails.type==='clothing'){
+          return new Clothing(productDetails)
+        }
+        return new Product(productDetails);
+      });
+      fun();
+      console.log('load products');
   });
-  fun();
-  console.log('load products');
-});
 
-  xhr.addEventListener('error',(error)=>{
+  xhr.addEventListener('error',()=>{
     console.log('unexpected error. please try again later')
-  })
+  });
 
-  xhr.open('GET','https:/supersimplebackend.dev/products');
+  xhr.open('GET','backend/products.json');
   xhr.send();
-  //xhr.response() load using the addToListner and then get the response from it 
 }
 //loadProducts(); calling of function 
 
