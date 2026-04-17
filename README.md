@@ -245,7 +245,7 @@ This project is for educational purposes. Amazon and its logo are trademarks of 
 ## 🔗 Links
 
 - **Repository**: [https://github.com/sudhansh296/amazon-clone](https://github.com/sudhansh296/amazon-clone)
-- **Live Demo**: [View Live Site](https://amazon-clone-sudhansh296.netlify.app)
+- **Live Demo**: [View Live Site](https://amazonclonebyshu.netlify.app)
 
 ## 🙏 Acknowledgments
 
